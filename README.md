@@ -99,6 +99,12 @@ dbt docs serve     # View at localhost:8080
 | **Change Management** | Uncontrolled changes causing production issues | CI/CD Pipeline Automation | • Git-based version control<br>• Automated testing gates<br>• Pull request reviews<br>• Deployment tracking |
 | **Business Continuity** | Disaster recovery failures & data loss | Infrastructure as Code | • Terraform templates<br>• Environment reproducibility<br>• Automated backup procedures<br>• Rollback capabilities |
 
+> [IMPORTANT]
+> Examples showing implementations of these features are shown in this repository. You can also see the infographs here: https://github.com/manuelbomi/dbt-Databricks-Enterprise-Blueprint-Unity-Catalog-Data-Quality-and-Scalable-Architecture.git
+> Please check under Miscellaneous
+>
+> 
+
 ##### Implementation Benefits
 - **80% faster** compliance reporting with Unity Catalog lineage
 - **Zero** regulatory violations since implementation
