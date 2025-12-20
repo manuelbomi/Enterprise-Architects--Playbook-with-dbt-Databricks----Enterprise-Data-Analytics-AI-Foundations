@@ -1,7 +1,7 @@
 # Enterprise Architects Playbook with dbt/Databricks: Enterprise Data Analytics AI Foundations
 
 ## Overview
-##### We present a dbt/Databricks based template through which enterprise teams can collaborate and ensure that their approach to enterprise data curation, EDA, governance, data quality assurance enjoys the benefits of dbt (Data Build Tool) which include:
+##### We present a dbt/Databricks based template through which enterprise teams can collaborate and ensure that their approach to enterprise data curation, EDA, data governance, data quality assurance enjoys the benefits of dbt (Data Build Tool) which include:
 
 ##### <ins>Software Engineering Best Practices</ins>: Applies version control (Git), testing, modularity, and CI/CD to data, making pipelines more reliable and maintainable
 
@@ -128,4 +128,20 @@ model_optimizations:
   partition_by: "date_day"         # Query performance
   cluster_by: ["customer_id"]      # Data skipping
   zorder_by: ["transaction_date"]  # I/O optimization
+```
+
+### <ins>3. Team Collaboration & Standardization</ins>
+
+```python
+dbt_project/
+├── models/
+│   ├── finance/          # Finance team owns these
+│   ├── marketing/        # Marketing team owns these  
+│   └── analytics/        # Analytics team owns these
+│
+└── macros/
+    ├── finance/          # Department-specific macros
+    ├── marketing/
+    └── shared/           # Cross-team utilities
+
 ```
