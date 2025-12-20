@@ -3,32 +3,25 @@
 ## Overview
 ##### We present a dbt/Databricks based template through which enterprise teams can collaborate and ensure that their approach to enterprise data curation, EDA, data governance, data quality assurance enjoys the benefits of dbt (Data Build Tool) which include:
 
-##### <ins>Software Engineering Best Practices</ins>: 
-
+##### <ins>Software Engineering Best Practices</ins>:
 ###### Applies version control (Git), testing, modularity, and CI/CD to data, making pipelines more reliable and maintainable
 
 ##### <ins>Automated Documentation & Lineage</ins>: 
-
 ###### Generates searchable documentation and visual data lineage, making data easier to understand, trust, and debug. Examples are shown in this repo. You can also see the inforgraphs (under) Miscellaneous here:  https://github.com/manuelbomi/dbt-Databricks-Enterprise-Blueprint-Unity-Catalog-Data-Quality-and-Scalable-Architecture.git
 
 ##### <ins>SQL-First & Analyst-Friendly</ins>: 
-
 ###### Empowers analysts and engineers familiar with SQL to build complex pipelines, reducing reliance on specialized engineers. Examples are shown in this repo. You can also see the inforgraphs (under) Miscellaneous here:  https://github.com/manuelbomi/dbt-Databricks-Enterprise-Blueprint-Unity-Catalog-Data-Quality-and-Scalable-Architecture.git
 
 ##### <ins>Data Quality & Integrity</ins>: 
-
 ###### Built-in testing catches errors early, ensuring high-quality, accurate, and trustworthy data. Examples are shown in this repo. You can also see the inforgraphs (under) Miscellaneous here:  https://github.com/manuelbomi/dbt-Databricks-Enterprise-Blueprint-Unity-Catalog-Data-Quality-and-Scalable-Architecture.git
 
 ##### <ins>Efficiency & Performance (ELT)</ins>: 
-
 ###### Pushes transformations into the data warehouse (ELT), leveraging its power for faster processing and reduced data movement. Examples are shown in this repo. You can also see the inforgraphs (under) Miscellaneous here:  https://github.com/manuelbomi/dbt-Databricks-Enterprise-Blueprint-Unity-Catalog-Data-Quality-and-Scalable-Architecture.git
 
 ##### <ins>Collaboration & Scalability</ins>: 
-
 ###### Facilitates teamwork with version control and shared logic, allowing pipelines to scale as data grows. 
 
 ##### <ins>Flexibility & Platform Portability </ins>: 
-
 ###### Works across major cloud data platforms like Snowflake, BigQuery, and Redshift, fitting into modern data stacks. 
 
 ---
