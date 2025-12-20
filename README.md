@@ -22,3 +22,22 @@
 - **Zero** regulatory violations since implementation
 - **99.9%** data quality SLA achievement
 - **100%** of changes tracked and auditable
+
+---
+
+### <ins>2. Scalability & Performance</ins>
+
+```python
+# Enterprise scaling example from config/environments/prod.yml
+warehouse_config:
+  size: "Large"                    # Right-sized compute
+  auto_stop: 120                   # Cost optimization
+  max_clusters: 10                 # Horizontal scaling
+  channel: "CHANNEL_PREVIEW"       # Early access to features
+  
+model_optimizations:
+  incremental_strategy: "merge"    # Efficient large datasets
+  partition_by: "date_day"         # Query performance
+  cluster_by: ["customer_id"]      # Data skipping
+  zorder_by: ["transaction_date"]  # I/O optimization
+```
