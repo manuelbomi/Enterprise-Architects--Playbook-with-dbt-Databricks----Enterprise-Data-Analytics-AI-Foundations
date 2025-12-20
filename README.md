@@ -152,3 +152,25 @@ dbt_project/
     └── shared/           # Cross-team utilities
 
 ```
+
+### <ins>4. Cost Management & Optimization</ins>
+
+```python
+-- config/databricks/warehouse-configuration.md
+-- Development: 2X-Small ($0.22/DBU)
+-- Staging: X-Small ($0.44/DBU)  
+-- Production: Small ($0.88/DBU) with auto-scaling
+
+-- Cost-saving macros in dbt_project/macros/utils/
+{% macro materialize_by_environment() %}
+  {% if target.name == 'dev' %}
+    {{ return('view') }}           -- Cheaper in dev
+  {% else %}
+    {{ return('table') }}          -- Performant in prod
+  {% endif %}
+{% endmacro %}
+```
+
+---
+
+##  Enterprise Architecture Patterns Included
