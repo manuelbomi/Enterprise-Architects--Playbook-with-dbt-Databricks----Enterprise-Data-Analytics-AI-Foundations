@@ -1,4 +1,4 @@
-
+# Enterprise Architects Playbook with dbt/Databricks: Enterprise Data Analytics AI Foundations
 
 ## Overview
 ##### We present a dbt/Databricks based template through which enterprise teams can collaborate and ensure that their approach to enterprise data curation, EDA, governance, data quality assurance enjoys the benefits of dbt (Data Build Tool) which include:
