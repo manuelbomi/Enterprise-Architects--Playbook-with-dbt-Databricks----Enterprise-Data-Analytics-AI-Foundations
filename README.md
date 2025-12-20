@@ -281,7 +281,7 @@ backup_strategy:
 
 
 
-#### <ins>Scenario 2</ins>: 
+#### <ins>Scenario 2</ins>: Healthcare Organization
 ```python
 -- dbt_project/models/marts/patient_analytics.sql
 {{ config(
@@ -297,6 +297,175 @@ backup_strategy:
 
 
 
-#### <ins>Scenario 3</ins>:
+#### <ins>Scenario 3</ins>: E-commerce Scale-up
+
+```python
+# scripts/monitoring/check-model-freshness.sh
+# Monitors:
+# - SLA compliance (99.9% uptime)
+# - Data freshness alerts (<15 min latency)
+# - Cost alerts (unexpected spikes)
+# - Performance degradation
+
+```
+
+ 
+#### <ins>Scenario 4</ins>: Global Quick-Service Restaurant (e.g., McDonald's, Burger King, KFC)
+```python
+-- dbt_project/models/marts/drive_thru_optimization.sql
+{{ config(
+    materialized='incremental',
+    unique_key='drive_thru_session_id',
+    partition_by=['date_day'],
+    cluster_by=['restaurant_id', 'time_hour'],
+    tags=[
+        'qsr', 
+        'drive_thru', 
+        'real_time_analytics',
+        'ai_training_data'
+    ],
+    meta={
+        "business_impact": "drive_thru_efficiency",
+        "service_level": "gold",  -- 99.9% uptime required
+        "latency_requirement": "< 5 minutes",
+        "data_sensitivity": "operational_pii",
+        "ai_usage": [
+            "wait_time_prediction",
+            "order_completion_forecasting",
+            "staff_scheduling_optimization"
+        ],
+        "compliance_tags": ["pci_dss", "gdpr"],
+        "regional_variations": {
+            "na": "car_throughput_optimization",
+            "eu": "bike_delivery_integration",
+            "asia": "scooter_pickup_optimization"
+        },
+        "franchise_reporting": {
+            "required": true,
+            "frequency": "daily",
+            "anonymization": "aggregate_level"
+        }
+    }
+) }}
+
+WITH drive_thru_sessions AS (
+    SELECT 
+        -- Unique session identifier
+        CONCAT(restaurant_id, '_', transaction_timestamp::date, '_', 
+               DENSE_RANK() OVER (PARTITION BY restaurant_id, transaction_timestamp::date 
+                                  ORDER BY transaction_timestamp)) as drive_thru_session_id,
+        
+        -- Restaurant context
+        restaurant_id,
+        franchise_group_id,
+        region_code,
+        country,
+        
+        -- Time dimensions
+        transaction_timestamp,
+        DATE(transaction_timestamp) as date_day,
+        EXTRACT(HOUR FROM transaction_timestamp) as time_hour,
+        EXTRACT(MINUTE FROM transaction_timestamp) as time_minute,
+        
+        -- Session metrics
+        COUNT(*) OVER session_window as items_in_session,
+        SUM(total_price) OVER session_window as session_value,
+        MIN(transaction_timestamp) OVER session_window as session_start,
+        MAX(transaction_timestamp) OVER session_window as session_end,
+        
+        -- Customer metrics (tokenized for privacy)
+        MD5(customer_id) as customer_token,  -- Tokenized identifier
+        COUNT(DISTINCT customer_id) OVER session_window as customers_in_session,
+        
+        -- Operational metrics
+        AVG(estimated_prep_time) as avg_prep_time,
+        MAX(order_complexity_score) as order_complexity,
+        
+        -- Weather & external factors
+        weather_condition,
+        temperature_fahrenheit,
+        is_holiday,
+        local_event_impact
+        
+    FROM {{ ref('stg_drive_thru_transactions') }}
+    WHERE transaction_channel = 'drive_thru'
+    WINDOW session_window AS (
+        PARTITION BY restaurant_id, 
+                     DATE(transaction_timestamp),
+                     -- Define session window (5 minute gap)
+                     FLOOR(EXTRACT(EPOCH FROM transaction_timestamp) / 300)
+        ORDER BY transaction_timestamp
+        ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING
+    )
+),
+
+session_aggregates AS (
+    SELECT 
+        drive_thru_session_id,
+        restaurant_id,
+        franchise_group_id,
+        region_code,
+        country,
+        date_day,
+        time_hour,
+        
+        -- Wait time calculations
+        EXTRACT(EPOCH FROM (session_end - session_start)) as total_session_seconds,
+        
+        -- Efficiency metrics
+        session_value / NULLIF(total_session_seconds, 0) as revenue_per_second,
+        items_in_session / NULLIF(total_session_seconds, 0) as items_per_second,
+        
+        -- Customer experience metrics
+        CASE 
+            WHEN total_session_seconds < 180 THEN 'excellent'
+            WHEN total_session_seconds < 300 THEN 'good'
+            WHEN total_session_seconds < 420 THEN 'fair'
+            ELSE 'poor'
+        END as wait_time_rating,
+        
+        -- AI-ready features
+        ARRAY[
+            items_in_session,
+            session_value,
+            avg_prep_time,
+            order_complexity,
+            temperature_fahrenheit::float,
+            CASE WHEN is_holiday THEN 1 ELSE 0 END
+        ] as ml_features_vector,
+        
+        -- For generative AI training
+        CONCAT(
+            'Drive-thru session at restaurant ', restaurant_id,
+            ' during ', time_hour, ':00 on ', date_day,
+            ' with ', items_in_session, ' items totaling $', session_value,
+            ' completed in ', total_session_seconds, ' seconds.',
+            ' Weather was ', weather_condition, ' at ', temperature_fahrenheit, '°F.'
+        ) as llm_training_context,
+        
+        -- Compliance & audit fields
+        CURRENT_TIMESTAMP() as analysis_timestamp,
+        '{{ invocation_id }}' as dbt_invocation_id,
+        
+        -- Data governance
+        'pci_compliant' as data_security_level,
+        CASE 
+            WHEN country IN ('US', 'CA') THEN 'na_privacy_rules'
+            WHEN country IN ('UK', 'DE', 'FR') THEN 'gdpr_compliant'
+            ELSE 'global_standard'
+        END as privacy_framework
+
+    FROM drive_thru_sessions
+    QUALIFY ROW_NUMBER() OVER (
+        PARTITION BY drive_thru_session_id 
+        ORDER BY transaction_timestamp DESC
+    ) = 1
+)
+
+SELECT * FROM session_aggregates
+```
+
+---
+
 
 
