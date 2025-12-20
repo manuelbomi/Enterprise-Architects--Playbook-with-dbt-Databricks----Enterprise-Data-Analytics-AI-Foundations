@@ -174,3 +174,52 @@ dbt_project/
 ---
 
 ##  Enterprise Architecture Patterns Included
+
+#### <ins> 1. Medallion Architecture Implementation </ins>
+
+```python
+models/
+├── bronze/              # Raw ingestion (append-only)
+├── silver/              # Cleaned, validated data  
+└── gold/                # Business-ready aggregates
+
+```
+
+#### <ins> 2. Data Mesh Principles </ins>
+
+```python
+# Domain-oriented ownership in dbt_project.yml
+models:
+  finance_domain:
+    +schema: finance
+    +tags: ["finance", "owned_by:finance_team"]
+    +meta:
+      sla: "daily_6am"
+      pii_level: "high"
+      retention_days: 3650
+  
+  marketing_domain:
+    +schema: marketing
+    +tags: ["marketing", "owned_by:marketing_team"]
+    +meta:
+      sla: "hourly"
+      pii_level: "medium"
+      retention_days: 730
+
+```
+
+
+#### <ins> 3. Enterprise Security Patterns </ins>
+
+```python
+-- scripts/setup/setup-databricks-connection.sh
+# Implements:
+# 1. Service principals instead of personal tokens
+# 2. Secret management integration (Azure Key Vault/AWS Secrets Manager)
+# 3. Row/column-level security templates
+# 4. Audit logging configuration
+
+```
+---
+
+## Business Impact Metrics
