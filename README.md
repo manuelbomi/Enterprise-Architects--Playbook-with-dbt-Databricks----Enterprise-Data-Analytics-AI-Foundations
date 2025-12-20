@@ -272,7 +272,7 @@ models:
 ## Enterprise Deployment Scenarios
 
 
-#### <ins>Scenario 1</ins>: Large Financial Institution
+#### <ins>Scenario 1</ins>: Large Financial Institutions
 ```python
 # config/environments/prod.yml
 compliance_requirements:
@@ -294,7 +294,7 @@ backup_strategy:
 
 
 
-#### <ins>Scenario 2</ins>: Healthcare Organization
+#### <ins>Scenario 2</ins>: Healthcare Organizations
 ```python
 -- dbt_project/models/marts/patient_analytics.sql
 {{ config(
@@ -323,7 +323,7 @@ backup_strategy:
 ```
 
  
-#### <ins>Scenario 4</ins>: Global Quick-Service Restaurant (e.g., McDonald's, Burger King, KFC)
+#### <ins>Scenario 4</ins>: Global Quick-Service Restaurants (e.g., McDonald's, Burger King, KFC)
 ```python
 -- dbt_project/models/marts/drive_thru_optimization.sql
 {{ config(
