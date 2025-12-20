@@ -1,7 +1,76 @@
 
 
+## Overview
+##### We present a dbt/Databricks based template through which enterprise teams can collaborate and ensure that their approach to enterprise data curation, EDA, governance, data quality assurance enjoys the benefits of dbt (Data Build Tool) which include:
 
-##### The template is exceptionally valuable for enterprise applications because it solves the most critical challenges enterprise data teams face
+<ins>Software Engineering Best Practices</ins>: Applies version control (Git), testing, modularity, and CI/CD to data, making pipelines more reliable and maintainable
+
+
+
+
+##### The template is exceptionally valuable for enterprise applications because it solves the most critical challenges enterprise data teams face. 
+
+--- 
+##  Quick Start
+
+> [!TIP]
+> If your team prefers to build the template from ground up instead of clonning this repository, then you can read step-wise infographs on how you can build the template from scratch here: https://github.com/manuelbomi/dbt-Databricks-Enterprise-Blueprint-Unity-Catalog-Data-Quality-and-Scalable-Architecture.git
+> Check under Miscellaneus to observe how to build the template in your IDE of choice from ground up
+
+##### If you prefer to clone this repository however, follow the steps highlighted below: 
+
+### 1. Prerequisites
+```bash
+# Python 3.8+
+python --version
+
+# Databricks Account (Free Edition supports Unity Catalog)
+# dbt-core and databricks adapter
+pip install dbt-core dbt-databricks
+
+```
+---
+
+### 2. Clone & Setup
+
+```python
+
+git clone 
+cd dbt-databricks-enterprise-template
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # or `venv\Scripts\activate` on Windows
+
+# Install dependencies
+pip install -r requirements.txt
+
+```
+
+---
+
+### 3. Configure Databricks Connection
+
+- [x] Generate personal access token in Databricks
+
+- [x]  Copy SQL warehouse HTTP path
+
+- [x]  Update profiles.yml (use provided template)
+
+---
+
+### 4. Initialize & Test
+
+```python
+dbt debug  # Verify connection
+dbt run    # Build models
+dbt test   # Run data quality tests
+dbt docs generate  # Create documentation
+dbt docs serve     # View at localhost:8080
+
+```
+
+---
 
 
 ## Enterprise-Specific Value Propositions
