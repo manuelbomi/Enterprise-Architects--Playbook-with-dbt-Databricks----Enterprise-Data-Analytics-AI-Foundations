@@ -7,7 +7,6 @@
 
 
 
-
 ##### The template is exceptionally valuable for enterprise applications because it solves the most critical challenges enterprise data teams face. 
 
 --- 
@@ -35,7 +34,7 @@ pip install dbt-core dbt-databricks
 
 ```python
 
-git clone 
+git clone https://github.com/manuelbomi/Enterprise-Architects--Playbook-with-dbt-Databricks----Enterprise-Data-Analytics-AI-Foundations.git
 cd dbt-databricks-enterprise-template
 
 # Create virtual environment
