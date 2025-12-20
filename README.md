@@ -7,7 +7,7 @@
 ###### Applies version control (Git), testing, modularity, and CI/CD to data, making pipelines more reliable and maintainable
 
 ##### <ins>Automated Documentation & Lineage</ins>: 
-Generates searchable documentation and visual data lineage, making data easier to understand, trust, and debug. Examples are shown in this repo. You can also see the inforgraphs (under) Miscellaneous here:  https://github.com/manuelbomi/dbt-Databricks-Enterprise-Blueprint-Unity-Catalog-Data-Quality-and-Scalable-Architecture.git
+###### Generates searchable documentation and visual data lineage, making data easier to understand, trust, and debug. Examples are shown in this repo. You can also see the inforgraphs (under) Miscellaneous here:  https://github.com/manuelbomi/dbt-Databricks-Enterprise-Blueprint-Unity-Catalog-Data-Quality-and-Scalable-Architecture.git
 
 ##### <ins>SQL-First & Analyst-Friendly</ins>: 
 ###### Empowers analysts and engineers familiar with SQL to build complex pipelines, reducing reliance on specialized engineers. Examples are shown in this repo. You can also see the inforgraphs (under) Miscellaneous here:  https://github.com/manuelbomi/dbt-Databricks-Enterprise-Blueprint-Unity-Catalog-Data-Quality-and-Scalable-Architecture.git
