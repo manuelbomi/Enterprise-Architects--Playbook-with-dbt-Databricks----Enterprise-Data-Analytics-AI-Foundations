@@ -40,12 +40,12 @@ Applies version control (Git), testing, modularity, and CI/CD to data, making pi
 
 ### <ins> 1. High-Quality Data Foundation (The AI Fuel) </ins>
 ```python
--- Your existing models become training data sources
+
 -- model1.sql (customer data) → Customer AI assistants
 -- model2.sql (transaction data) → Sales forecasting AI
 -- model3.sql (dynamic queries) → Adaptive AI pipelines
 
--- Add this to show AI readiness:
+-- I add this to show AI readiness:
 {{ config(
     materialized='table',
     tags=['ai_training_data', 'llm_fine_tuning'],
@@ -63,7 +63,7 @@ Applies version control (Git), testing, modularity, and CI/CD to data, making pi
 ##### The testing framework provided by dbt ensures AI that models trains on reliable data:
 
 ```python
-# Extend your model1.yml for AI governance
+# You can extend the model1.yml for AI governance
 models:
   - name: model1
     columns:
