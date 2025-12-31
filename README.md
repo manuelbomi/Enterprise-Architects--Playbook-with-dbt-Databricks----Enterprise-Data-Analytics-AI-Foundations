@@ -60,7 +60,7 @@ Applies version control (Git), testing, modularity, and CI/CD to data, making pi
 
 ### <ins> 2. Data Quality Framework (AI Trust Layer) </ins>
 
-##### The testing framework provided by dbt ensures AI that models trains on reliable data:
+##### The testing framework provided by dbt ensures that AI models trains on reliable data:
 
 ```python
 # You can extend the model1.yml for AI governance
@@ -80,7 +80,7 @@ models:
 
 ### <ins> 3. Scalable Infrastructure (AI Deployment Platform) </ins>
 
-##### The Databricks Unity Catalog setup is  example shown in this tempalte is AI-ready:
+##### The Databricks Unity Catalog setup example shown in this tempalte is AI-ready:
 
 - Vector Database Integration: Databricks supports vector embeddings
 
